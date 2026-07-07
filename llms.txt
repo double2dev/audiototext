@@ -1,0 +1,54 @@
+# FreeAudioToText
+
+> Free, private, AI-powered audio and video transcription. Convert speech to text in 50+ languages with speaker diarization. No account required.
+
+FreeAudioToText (https://freeaudiototext.com) is a browser-based audio transcription tool that converts audio and video files into accurate, formatted text using advanced automatic speech recognition (ASR) models. The service is completely free for files under 25 MB, requires no registration, and processes all audio server-side with strict 24-hour auto-deletion of all data.
+
+## Core Capabilities
+
+- **Audio Transcription**: Converts MP3, MP4, M4A, WAV, OGG, FLAC, WebM, and other common audio/video formats to text.
+- **Speaker Diarization**: Automatically identifies and labels different speakers in a conversation (SPK_0, SPK_1, etc.), making it ideal for interviews, meetings, and podcasts.
+- **Multilingual Support**: Supports 50+ languages including English, Chinese (Simplified & Traditional), Spanish, French, German, Japanese, Korean, Portuguese, Arabic, and more. Auto-detection is available.
+- **AI Analysis (Optional)**: After transcription, users can generate an AI-powered report that includes a summary, key topics, speaker profiles, and sentiment analysis.
+- **Shareable Results**: Every transcription result gets a unique shareable URL (`?job=JOB_ID&share=1`) that can be embedded in Notion, WordPress, or any platform supporting HTML iframes.
+- **Embeddable Widget**: Transcription results can be embedded into any webpage using a simple `<iframe>` snippet.
+- **Export Formats**: Users can copy the full transcript or download it as a plain-text file.
+- **Privacy First**: No account, no login, no persistent storage. All files and transcripts are automatically deleted after 24 hours.
+
+## Use Cases
+
+- **Journalists & Researchers**: Transcribe interviews and focus groups with speaker labels.
+- **Students**: Convert lecture recordings or podcast episodes to searchable text for note-taking.
+- **Content Creators**: Generate subtitles, show notes, or blog post drafts from audio/video content.
+- **Business Teams**: Transcribe meeting recordings for documentation and action items.
+- **Developers**: Embed transcript results directly into Notion wikis or internal documentation sites.
+- **Non-native Speakers**: Transcribe and review audio content in a foreign language for language learning.
+
+## Technical Architecture
+
+- Frontend: Next.js 14 (React) hosted on Cloudflare Pages
+- Backend: Cloudflare Workers (Edge Runtime) + Cloudflare D1 (SQLite) + Cloudflare R2 (Object Storage)
+- ASR Engine: FunASR Paraformer-zh model (supports Mandarin, Cantonese, and multilingual audio) with VAD (Voice Activity Detection) and punctuation restoration
+- Speaker Identification: CAM++ speaker diarization model
+- Privacy Mechanism: All uploaded files are purged from Cloudflare R2 and all database records deleted after exactly 24 hours.
+
+## Pricing
+
+- **Free Tier**: Unlimited transcriptions for audio files under 25 MB, no account required.
+- **Paid Upgrade**: Files over 25 MB require a one-time payment per job (processed via Creem). No subscription required.
+
+## Key URLs
+
+- Homepage / Upload: https://freeaudiototext.com
+- Shared Result Example: https://freeaudiototext.com/?job=JOB_ID&share=1
+- Privacy Policy: https://freeaudiototext.com/privacy
+- Terms of Service: https://freeaudiototext.com/terms
+
+## Comparisons & Differentiation
+
+Unlike Otter.ai, Whisper API, Rev, or Sonix:
+- No subscription or account is required for basic use.
+- Data is automatically deleted after 24 hours (true ephemeral privacy).
+- Results are immediately shareable and embeddable with a single URL.
+- Speaker diarization is included for free.
+- The service is fully functional on mobile browsers without any app installation.
